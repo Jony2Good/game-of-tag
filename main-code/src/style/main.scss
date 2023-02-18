@@ -1,0 +1,181 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./normalize";
+@import "./variables";
+@import "./fonts";
+
+#app {
+  background: var(--grey-shade);
+}
+.page {
+  max-width: 400px;
+  padding: 32px;
+  margin: 0 auto;
+  user-select: none;
+}
+.title {
+  font: 32px/1.5 "Roboto", sans-serif;
+  margin: 0;
+  margin-bottom: 25px;
+  color: #202c2d;
+  text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5,
+    -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5,
+    -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5,
+    -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
+}
+.fifteen {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  padding: 5px;
+  margin-bottom: 16px;
+  background: #dde1e7;
+  border-radius: 10px;
+}
+.items {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 25%;
+  width: 25%;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  color: var(--white);
+  font-size: 32px;
+  background: #dde1e7;
+  transition: transform 0.3s ease-in-out, filter 0.5s;
+
+  &-span {
+    width: 84%;
+    height: 84%;
+    margin: 8%;
+    box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.45),
+      5px 5px 9px rgba(94, 104, 121, 0.3);
+  }
+}
+
+.btn-layout {
+  padding: 25px;
+  border-radius: 50% !important;
+  border: solid 8px #ececec;
+  outline: none;
+  color: var(--black);
+  box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
+    10px 10px 15px rgba(70, 70, 70, 0.15);
+}
+.btn-layout:active {
+  box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
+    10px 10px 15px rgba(70, 70, 70, 0.15),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.5),
+    inset 10px 10px 15px rgba(70, 70, 70, 0.15);
+}
+
+.game-field.gameShuffle {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#modal-container {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  z-index: 1;
+  &.four {
+    z-index: 0;
+    transform: scale(1);
+    .modal-background {
+      background: rgba(0, 0, 0, 0.7);
+      .modal {
+        animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+      }
+    }
+    + .content {
+      z-index: 1;
+      animation: blowUpContent 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+  }
+}
+
+.modal-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  vertical-align: middle;
+  .modal {
+    background: white;
+    padding: 50px;
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+  }
+}
+
+@keyframes blowUpContent {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  99.9% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes blowUpContentTwo {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes blowUpModal {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes blowUpModalTwo {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.modal-img {
+  background-image: url("../assets/images/sasha-grey.gif");
+  background-repeat: no-repeat;
+  height: 300px;
+  background-position: center center;
+}
+
+body {
+  background: rgb(177, 191, 216);
+  background: linear-gradient(
+    90deg,
+    rgba(177, 191, 216, 1) 0%,
+    rgba(103, 130, 180, 1) 35%,
+    rgba(41, 156, 180, 1) 100%
+  );
+  &.modal-active {
+    overflow: hidden;
+  }
+}
